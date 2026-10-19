@@ -22,11 +22,29 @@ function addToCart(cart, rank, quantity) {
   }
   return cart;
 }
-function changeQuantity() {
-  return notImplemented();
+function changeQuantity(card, id, quantity) {
+  if (quantity === 0) {
+    throw new RangeError("не принимает нулевое значение");
+  }
+
+  const cartItem = card.find(item => item.id === id)
+
+  if (cartItem && quantity >= cartItem.stock) {
+    throw new RangeError("не может быть больше чем в знчении stock");
+  }
+
+  if (cartItem) {
+    cartItem.quantity = quantity
+  } 
+  
+  return card
 }
-function removeFromCart() {
-  return notImplemented();
+function removeFromCart(cart, id) {
+  const cartItemIndex = cart.findIndex(item => item.id === id)
+  if (cartItemIndex !== -1) {
+    cart.splice(cartItemIndex, 1)
+  }
+  return cart
 }
 function calculateCartSubtotal() {
   return notImplemented();
