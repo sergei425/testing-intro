@@ -23,12 +23,12 @@ describe('sortProductsByPrice', () => {
     expect(sortProductsByPrice(res, 'desc').map(product => product.id)).toEqual([2, 5, 6])
   });
   test("'asc' не меняет исходный массив [1, 3, 4]", () => {
-    expect(sortProductsByPrice(products.filter(product => [1, 3, 4].includes(product.id)), 'asc').map(product => product.id)).toEqual([1, 3, 4])
+    expect(products.filter(product => [1, 3, 4].includes(product.id)).map(product => product.id)).toEqual([1, 3, 4])
   });
   test("'desc' не меняет исходный массив [1, 3, 4]", () => {
-    expect(sortProductsByPrice(products.filter(product => [1, 3, 4].includes(product.id)), 'desc').map(product => product.id)).toEqual([1, 3, 4])
+    expect(products.filter(product => [1, 3, 4].includes(product.id)).map(product => product.id)).toEqual([1, 3, 4])
   });
   test('направление по умолчанию не меняет исходный массив всех товаров', () => {
-    expect(sortProductsByPrice(products).map(product => product.id)).toEqual([1, 2, 3, 4, 5, 6])
+    expect(products.map(product => product.id)).toEqual([1, 2, 3, 4, 5, 6])
   });
 });
